@@ -138,27 +138,29 @@ const Navbar = () => {
           id="navbar-sticky"
         >
           <ul
-            className={`flex flex-col p-4 pt-[7vh] md:pt-4 rounded-b-xl relative z-30 ${navbarClass.backgroundColor}  md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:bg-transparent md:border-0`}
+            className={`flex flex-col p-4 pt-[7vh] md:pt-4 rounded-b-xl relative z-30 ${navbarClass.backgroundColor} md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:bg-transparent md:border-0`}
           >
-            {["Home", "Portfolio", "Services", "Contact", "About"].map(
-              (item) => (
-                <li
-                  key={item.toLowerCase()}
-                  className={`text-lg md:text-sm font-medium cursor-pointer text-center ${navbarClass.textColor} hover:text-gray-300 transition duration-300`}
+            {["Home", "Work", "Services", "Contact", "About"].map((item) => (
+              <li
+                key={item.toLowerCase()}
+                className={`group relative text-lg md:text-sm font-medium cursor-pointer text-center ${navbarClass.textColor} hover:text-white transition duration-300`}
+              >
+                <Link
+                  href={`/${
+                    item.toLowerCase() === "home" ? "" : `${item.toLowerCase()}`
+                  }`}
+                  onClick={() => setMenuOpen(false)}
+                  className="relative z-10"
                 >
-                  <Link
-                    href={`/${
-                      item.toLowerCase() === "home"
-                        ? ""
-                        : `${item.toLowerCase()}`
-                    }`}
-                    onClick={() => setMenuOpen(false)}
-                  >
-                    {item}
-                  </Link>
-                </li>
-              )
-            )}
+                  {item}
+                </Link>
+                {/* Underline animation */}
+                <span
+                  className="absolute left-0 top-5 bottom-0 w-0 h-[1.4px] bg-gray-300 transition-all duration-300 ease-in-out group-hover:w-full"
+                  aria-hidden="true"
+                ></span>
+              </li>
+            ))}
           </ul>
         </div>
       </div>

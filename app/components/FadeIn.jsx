@@ -1,4 +1,6 @@
+"use client";
 import React from "react";
+import { motion } from "framer-motion";
 
 const FadeIn = ({ view = "-200px", yvalue = 20, children }) => {
   return (
